@@ -27,7 +27,7 @@ const Router = createStackNavigator({
         
     },
     {
-        initialRouteName: 'Login'
+        initialRouteName: 'User'
     });
 
 export default Router;

@@ -6,12 +6,14 @@ import {
     StyleSheet,
     ScrollView,
     Image,
+    FlatList,
+    ImageBackground,
     TouchableWithoutFeedback
 } from 'react-native';
 
 var { width, height } = Dimensions.get('window');
 import px2dp from './tools/px2dp';
-import { red } from 'ansi-colors';
+
 
 export default class User extends Component {
     static navigationOptions = {
@@ -22,7 +24,39 @@ export default class User extends Component {
         super(props);
         this.state = {
             userName: '刘先生',
-            userTel: '1383838338'
+            userTel: '1383838338', 
+            cardList: [
+                {
+                    name: '中国石化1',
+                    cardNumber: '1234567890123456'
+                },
+                {
+                    name: '中国石化2',
+                    cardNumber: '1234567890123456'
+                },
+                {
+                    name: '中国石化3',
+                    cardNumber: '1234567890123456'
+                }
+            ],
+            menuData: [
+                {
+                    title: '我的油卡',
+                    imgSrc: require('./images/wode1.png')
+                },
+                {
+                    title: '优惠券',
+                    imgSrc: require('./images/wode2.png')
+                },
+                {
+                    title: '充值订单',
+                    imgSrc: require('./images/wode3.png')
+                },
+                {
+                    title: '商城订单',
+                    imgSrc: require('./images/wode4.png')
+                }
+            ]
         }
 }
 
@@ -30,8 +64,21 @@ export default class User extends Component {
     
     }
 
+    renderCardItemList = (obj) => {
+        const { item } = obj;
+        const tmpCard = item.cardNumber.match(/\d{4}/g).join(' ');
+        return (
+            <ImageBackground style={styles.cardListWrap} source={require('./images/kabeijing1.png')}>
+                <View style={styles.logoWrap}>
+                    <Image style={styles.cardLogo} source={require('./images/zhongshihua.png')}/>
+                </View>
+                <Text style={styles.cardNumber}>{tmpCard}</Text>
+            </ImageBackground>
+        )
+    }
+
     render() {
-        const { userName, userTel } = this.state;
+        const { userName, userTel, cardList, menuData } = this.state;
         return (
             <View style={{ backgroundColor: '#fff', flex: 1 }}>
                 <ScrollView>
@@ -64,6 +111,30 @@ export default class User extends Component {
                         </View>
                     </TouchableWithoutFeedback>
                 </View>
+                <View style={styles.cardInfoWrap}>
+                    <FlatList
+                        data={cardList}
+                        renderItem={this.renderCardItemList}
+                        keyExtractor={(item, index) => index.toString()}
+                        horizontal={true} 
+                        showsHorizontalScrollIndicator={false}
+                    />
+                </View>
+                <View style={styles.myMenuWrap}>
+                    {
+                        menuData.map((menu, index) => {
+                            const { imgSrc, title } = menu;
+                            return (
+                                <TouchableWithoutFeedback key={index}>
+                                    <View style={styles.menu}>
+                                        <Image style={styles.menuLogo} source={imgSrc}/>
+                                        <Text>{title}</Text>
+                                    </View>
+                                </TouchableWithoutFeedback>
+                            )
+                        })
+                    }
+                </View>
                 </ScrollView>
             </View>
         )
@@ -71,6 +142,25 @@ export default class User extends Component {
 }
 
 const styles = StyleSheet.create({
+    menu: {
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    menuLogo: {
+        width: px2dp(24),
+        height: px2dp(24),
+        marginBottom: px2dp(10),
+        marginTop: px2dp(24)
+    },
+    myMenuWrap: {
+        width: px2dp(345),
+        height: px2dp(91),
+        marginTop: px2dp(22),
+        marginLeft: px2dp(15),
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around'
+    },
     settingWrap: {
         marginTop: px2dp(58),
         marginLeft: px2dp(338),
@@ -81,8 +171,10 @@ const styles = StyleSheet.create({
         marginLeft: px2dp(15),
         height: px2dp(67),
         flexDirection: 'row',
+        backgroundColor: 'red',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginBottom: px2dp(23)
     },
     userInfoLeft: {
         flexDirection: 'row',
@@ -125,5 +217,32 @@ const styles = StyleSheet.create({
         fontSize: px2dp(11),
         color: '#FD741C',
         fontWeight: '500'
+    },
+    cardInfoWrap: {
+        // width: px2dp(323),
+        // height: px2dp(130),
+    },
+    cardListWrap: {
+        width: px2dp(323),
+        height: px2dp(130),
+        borderRadius: px2dp(10),
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+    logoWrap: {
+        width: px2dp(323),
+        marginBottom: px2dp(10)
+    },
+    cardLogo: {
+        marginTop: px2dp(20),
+        marginLeft: px2dp(30),
+        width: px2dp(83),
+        height: px2dp(21)
+    },
+    cardNumber: {
+        fontWeight: 'bold',
+        color: '#fff',
+        fontSize: px2dp(23),
+        // lineHeight: px2dp(18),
     }
 })

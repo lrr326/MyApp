@@ -1,15 +1,15 @@
 import React from 'react';
 import {createStackNavigator} from 'react-navigation';
 import Login from './pages/Login';
-import Mine from './pages/Mine';
+import User from './pages/User';
 import Register from './pages/register'
 import Index from './pages/Index'
 import Home from './pages/Home'
 
 
 const Router = createStackNavigator({
-        Mine: {
-            screen: Mine
+        User: {
+            screen: User
         }, // 我的
         Login: {
             screen: Login
@@ -27,7 +27,7 @@ const Router = createStackNavigator({
         
     },
     {
-        initialRouteName: 'Mine'
+        initialRouteName: 'Login'
     });
 
 export default Router;

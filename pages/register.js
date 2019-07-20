@@ -16,14 +16,14 @@ import px2dp from './tools/px2dp';
 // import NoDoublePress from "./tools/NoDoublePress";
 // import Header from './Header'
 
-export default class Login extends Component{
+export default class register extends Component{
     static navigationOptions = {
         header: null
     };
     constructor(props){
         super(props);
         this.state = {
-            code:'获取验证码'
+    
         }
     }
 
@@ -52,7 +52,6 @@ export default class Login extends Component{
             1000
         )
     }
-    
 
     render(){
         const { navigate } = this.props.navigation;
@@ -99,12 +98,12 @@ export default class Login extends Component{
                                         right:0,
                                         borderLeftColor:'#989898',
                                         borderLeftWidth:px2dp(1),
-                                        paddingHorizontal:px2dp(14)
+                                        paddingLeft:px2dp(14)
                                     }}>
                                         <Text style={{
                                             color:'#FF1A1A',
                                             fontSize:px2dp(14)
-                                        }}>{this.state.code}</Text>
+                                        }}>获取验证码</Text>
                                     </View>
                                 </TouchableWithoutFeedback>
                             </View>
@@ -114,16 +113,9 @@ export default class Login extends Component{
                                 </View>
                             }
                         </View>
-                        <TouchableWithoutFeedback onPress={()=>navigate('Index')}>
+                        <TouchableWithoutFeedback onPress={()=>NoDoublePress.onPress(()=>{this._request()})}>
                             <View style={{justifyContent: 'center',alignItems: 'center',marginTop: px2dp(62)}}>
                                 <View style={styles.login_btn}>
-                                    <Text style={{fontSize:px2dp(16),color:'#fff',textAlign:'center',lineHeight:px2dp(44)}}>登录</Text>
-                                </View>
-                            </View>
-                        </TouchableWithoutFeedback>
-                        <TouchableWithoutFeedback onPress={()=>navigate('Register')}>
-                            <View style={{justifyContent: 'center',alignItems: 'center',marginTop: px2dp(33)}}>
-                                <View style={styles.register_btn}>
                                     <Text style={{fontSize:px2dp(16),color:'#fff',textAlign:'center',lineHeight:px2dp(44)}}>注册</Text>
                                 </View>
                             </View>

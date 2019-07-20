@@ -58,7 +58,19 @@ export default class Home extends Component{
         const { navigate } = this.props.navigation;
         return(
             <View style={{flex:1,backgroundColor: '#fcfcfc'}}>
-                <Text>3333</Text>
+                <ScrollView>
+                    <View>
+                        <Image 
+                            source={
+                                require('./images/banner.png')
+                            }
+                            style={{
+                                width:'100%',
+                                height:px2dp(209)
+                            }}
+                        />
+                    </View>
+                </ScrollView>
             </View>
 
         )

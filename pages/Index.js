@@ -62,7 +62,7 @@ export default class Index extends Component{
                         selected={this.state.selectedTab==='welfare'}
                         title="福利"
                         titleStyle={{color:'#999'}}
-                        selectedTitleStyle={{color:'#63B8FF'}}
+                        selectedTitleStyle={{color:'#FD741C'}}
                         onPress={()=>this.changePage('welfare')}
                         renderIcon = {()=>  < Image style={styles.img} source={require('./images/menu2.png')}/>}
                         renderSelectedIcon = {()=>  < Image style={styles.img} source = {require('./images/Welfare.png')} /> }
@@ -72,7 +72,7 @@ export default class Index extends Component{
                 <TabNavigator.Item
                         selected={this.state.selectedTab==='Center'}
                         titleStyle={{color:'#999'}}
-                        selectedTitleStyle={{color:'#63B8FF'}}
+                        selectedTitleStyle={{color:'#FD741C'}}
                         onPress={()=>{this.changePage('Center')}}
                         renderIcon = {()=>  < Image style={{width:px2dp(45),height:px2dp(33)}} source={require('./images/menu5.png')}/>}
                         renderSelectedIcon = {()=>  < Image style={{width:px2dp(45),height:px2dp(33)}}  source = {require('./images/menu5.png')} /> }
@@ -83,7 +83,7 @@ export default class Index extends Component{
                         selected={this.state.selectedTab==='FindPage'}
                         title="订单"
                         titleStyle={{color:'#999'}}
-                        selectedTitleStyle={{color:'#63B8FF'}}
+                        selectedTitleStyle={{color:'#FD741C'}}
                         onPress={()=>{this.changePage('FindPage')}}
                         renderIcon = {()=>  < Image style={styles.img} source={require('./images/find.png')}/>}
                         renderSelectedIcon = {()=>  < Image style={styles.img} source = {require('./images/findSected.png')} /> }
@@ -94,7 +94,7 @@ export default class Index extends Component{
                         selected={this.state.selectedTab==='User'}
                         title="我的"
                         titleStyle={{color:'#999'}}
-                        selectedTitleStyle={{color:'#63B8FF'}}
+                        selectedTitleStyle={{color:'#FD741C'}}
                         onPress={()=>{this.changePage('User')}}
                         renderIcon = {()=>  < Image style={styles.img} source={require('./images/user.png')}/>}
                         renderSelectedIcon = {()=>  < Image style={styles.img} source = {require('./images/menu4.png')} /> }

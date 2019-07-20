@@ -77,7 +77,7 @@ export default class Index extends Component{
                         renderIcon = {()=>  < Image style={{width:px2dp(45),height:px2dp(33)}} source={require('./images/menu5.png')}/>}
                         renderSelectedIcon = {()=>  < Image style={{width:px2dp(45),height:px2dp(33)}}  source = {require('./images/menu5.png')} /> }
                     >
-                    <User {...this.props}/>
+                    <Center {...this.props}/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
                         selected={this.state.selectedTab==='FindPage'}

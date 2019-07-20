@@ -31,7 +31,27 @@ export default class register extends Component{
         
     }
 
-    
+    getCode(){
+        console.log(99999)
+        const _this = this
+        let code = 10
+        this.timer = setInterval(
+            () => {     //  {}  这里面写要执行的内容
+            console.log(988888)
+                code --
+                this.setState({
+                   code:code 
+                })
+                if(code==0){
+                    clearInterval(this.timer)
+                    this.setState({
+                        code:'获取验证码'
+                    })
+                }
+            },
+            1000
+        )
+    }
 
     render(){
         const { navigate } = this.props.navigation;
@@ -72,18 +92,20 @@ export default class register extends Component{
                                         left:12
                                     }}
                                 />
-                                <View style={{
-                                    position:'absolute',
-                                    right:0,
-                                    borderLeftColor:'#989898',
-                                    borderLeftWidth:px2dp(1),
-                                    paddingLeft:px2dp(14)
-                                }}>
-                                    <Text style={{
-                                        color:'#FF1A1A',
-                                        fontSize:px2dp(14)
-                                    }}>获取验证码</Text>
-                                </View>
+                                <TouchableWithoutFeedback onPress={()=>{this.getCode()}}>
+                                    <View style={{
+                                        position:'absolute',
+                                        right:0,
+                                        borderLeftColor:'#989898',
+                                        borderLeftWidth:px2dp(1),
+                                        paddingLeft:px2dp(14)
+                                    }}>
+                                        <Text style={{
+                                            color:'#FF1A1A',
+                                            fontSize:px2dp(14)
+                                        }}>获取验证码</Text>
+                                    </View>
+                                </TouchableWithoutFeedback>
                             </View>
                             {
                                 this.state.warning &&<View>

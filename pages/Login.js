@@ -42,15 +42,15 @@ export default class Login extends Component{
                 this.setState({
                    code:code 
                 })
+                if(code==0){
+                    clearInterval(this.timer)
+                    this.setState({
+                        code:'获取验证码'
+                    })
+                }
             },
             1000
         )
-        if(code==0){
-            clearInterval(this.timer)
-            this.setState({
-                code:'获取验证码'
-            })
-        }
     }
     
 

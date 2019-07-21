@@ -144,22 +144,27 @@ export default class User extends Component {
 const styles = StyleSheet.create({
     menu: {
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     menuLogo: {
         width: px2dp(24),
         height: px2dp(24),
         marginBottom: px2dp(10),
-        marginTop: px2dp(24)
     },
     myMenuWrap: {
         width: px2dp(345),
         height: px2dp(91),
+        borderColor:'#EEEEEE',
+        borderWidth:px2dp(1),
+        backgroundColor:'#ffffff',
+        borderRadius:6,
+        elevation:3,
         marginTop: px2dp(22),
         marginLeft: px2dp(15),
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+     
     },
     settingWrap: {
         marginTop: px2dp(58),
